@@ -1,57 +1,106 @@
-# 🌊 Leviathan Threat Classifier — Streamlit App
+# Threat Prediction App
 
-## File Structure
-```
-leviathan_app/
-├── app.py            ← Streamlit frontend
-├── model.py          ← Model architecture + prediction logic
-├── requirements.txt  ← Dependencies
+A simple Streamlit web app for predicting threat levels using a Deep Learning model.
+
+---
+
+## Features
+
+- Upload CSV sensor data
+- Predict threat levels
+- View predictions in browser
+- Download-ready prediction output
+- Simple and lightweight UI
+
+---
+
+## Technologies Used
+
+- Python
+- Streamlit
+- TensorFlow / Keras
+- Pandas
+- NumPy
+- Scikit-learn
+
+---
+
+## Project Structure
+
+```text
+project/
+│
+├── app.py
+├── model.h5
+├── requirements.txt
 └── README.md
 ```
 
-## How to Run
+---
 
-### 1. Install dependencies
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/YOUR_USERNAME/threat-prediction-app.git
+```
+
+Move into the project folder:
+
+```bash
+cd threat-prediction-app
+```
+
+Install dependencies:
+
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Run the app
+---
+
+## Run the Application
+
 ```bash
 streamlit run app.py
 ```
 
-### 3. Save your trained model weights from Kaggle
-Add this at the end of your Kaggle notebook after training:
-```python
-model.save_weights('v5_weights.h5')
+If Streamlit command does not work:
+
+```bash
+python -m streamlit run app.py
 ```
-Then download `v5_weights.h5` from Kaggle outputs.
 
-## App Features
+---
 
-### Single Prediction tab
-- Enter sensor values manually for all 10 timesteps
-- Or generate random demo data
-- See threat level with color-coded result card
-- See probability bars for all 4 classes
-- See sensor activity heatmap
+## Input Format
 
-### Batch Prediction tab  
-- Upload test.csv (same format as Kaggle)
-- Classifies all sequences at once
-- Shows prediction distribution chart
-- Download submission.csv directly
+Upload a CSV file containing:
 
-### Sidebar
-- Upload model weights (.h5)
-- Upload train.csv to fit the scaler properly
-- Shows model info
+- `sequence_id`
+- `timestep`
+- `sensor_0` to `sensor_24`
 
-## Threat Levels
-| Level | Name | Description |
-|-------|------|-------------|
-| 0 | DORMANT | Inactive, no threat |
-| 1 | REACTIVE | Minor instability |
-| 2 | PREDATORY | Aggressive behavior |
-| 3 | EXTINCTION-LEVEL | Catastrophic event |
+Each sequence should contain 10 timesteps.
+
+---
+
+## Model
+
+The app uses a TensorFlow/Keras Conv1D model trained on sequential sensor data for multi-class threat prediction.
+
+---
+
+## Example Workflow
+
+1. Start the Streamlit app
+2. Upload test CSV file
+3. Model predicts threat levels
+4. Results displayed instantly
+
+---
+
+## Author
+
+Snehal Muduli
