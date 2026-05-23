@@ -1,5 +1,6 @@
 streamlit
-tensorflow==2.15.0
+tensorflow==2.19.0
 pandas
 numpy
 scikit-learn
+h5py
